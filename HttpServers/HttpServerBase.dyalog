@@ -68,7 +68,7 @@
     fmtHeaders←{⎕ML←1 ⋄ 0∊⍴⍵:'' ⋄ ∊{NL,⍨(1⊃⍵),': ',⍕2⊃⍵}¨↓⍵}
 
     ∇ d←HttpDate
-      d←2⊃srv.DRC.GetProp'.' 'HttpDate'
+      d←2⊃srv.LIB.GetProp'.' 'HttpDate'
     ∇
 
     ∇ e←SendAnswer(status hdr content);Answer
