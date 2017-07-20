@@ -14,7 +14,7 @@
      srv.Start
      ⎕DL 1.5×srv.timeout÷1000 ⍝ Make sure it times out
  :Else
-     →fail because'Unable to start server: ',⊃⎕DMX.DM
+     →fail Because'Unable to start server: ',⊃⎕DMX.DM
  :EndTrap
 
  ret←#.HttpCommand.Get'http://localhost:8088/index.html'
