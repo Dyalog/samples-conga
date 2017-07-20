@@ -1,0 +1,8 @@
+DyalogTest : 0.1
+ID         : Conga 3.0 Sample Test
+Description: Test the samples-conga
+
+Setup   : setup
+Teardown: teardown
+Test    : test_dochttprequest
+

@@ -1,0 +1,10 @@
+DyalogBuild: 0.1
+ID         : samples-conga, Version=3.0
+Description: Load all CONGA samples into memory
+Defaults   : ⎕IO←⎕ML←1
+
+EXEC  : #.⎕EX 'Tests' 'Certificates' 'HttpServices' 'RPCServices'
+
+NS    : CertTool/*.dyalog, Target=CertTool
+NS    : HttpServers/*.dyalog, Target=HttpServers
+NS    : RPCServices/*.dyalog, Target=RPCServices

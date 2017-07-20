@@ -1,4 +1,6 @@
 ﻿:Class ChatServer : HttpServerBase
+⍝∇:require =HttpServerBase
+
     ⍝ Implement a web-socket based chat server
 
     :Field Public Shared clients←⍬
@@ -15,7 +17,7 @@
       :Implements Constructor :Base arg
      
       DYALOG←'/',⍨2 ⎕NQ'.' 'GetEnvironment' 'Dyalog'
-      INDEXHTML←DYALOG,'apllib/conga/HttpServers/chat.html'
+      INDEXHTML←DYALOG,'Samples/Conga/HttpServers/chat.html'
       :If ~⎕NEXISTS INDEXHTML
           ('Index page "',INDEXHTML,'" not found')⎕SIGNAL 2
       :EndIf
@@ -54,7 +56,7 @@
     ∇ onWSReceive(obj data);code;msg;ns;resp;final;opcode
       :Access Public                
       
-      (msg final opcode)←data
+      ⎕←(msg final opcode)←data
       ns←{2::7159⌶⍵ ⋄ ⎕JSON ⍵}msg
       ns.date←,'ZI4,<->,ZI2,<->,ZI2,< >,ZI2,<:>,ZI2,<:>,ZI2,<.>,ZI3'⎕FMT⍉⍪⎕TS  
 

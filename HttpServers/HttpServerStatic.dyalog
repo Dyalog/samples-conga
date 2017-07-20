@@ -1,5 +1,7 @@
-﻿:Class HttpServerStatic : HttpServerBase
-⍝ An example of an Http Server capable of servicing requests for files
+﻿:Class HttpServerStatic : HttpServerBase       
+⍝∇:require =HttpServerBase
+
+⍝ An example of an Http Server capable of servicing requests for files in a folder
 
      FOLDER←'/root/folder/' ⍝ /// Should be a constructor argument
 

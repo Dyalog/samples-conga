@@ -1,4 +1,5 @@
 ﻿:Class DocSecureHttpRequest : HttpServerBase
+⍝∇:require =HttpServerBase
 
     NL←⎕UCS 13 10
 

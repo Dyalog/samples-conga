@@ -1,4 +1,5 @@
-﻿:Class DocHttpRequest: HttpServerBase
+﻿:Class DocHttpRequest: HttpServerBase    
+⍝∇:require =HttpServerBase
 
     NL←⎕UCS 13 10
     ∇ MakeN arg
