@@ -1,4 +1,4 @@
-:Namespace CertTool
+﻿:Namespace CertTool
 ⍝ Examples showing how GnuTLS "CertTool" can be used
 ⍝ to generate a variety of certificates.
 ⍝    
@@ -68,12 +68,15 @@
       mkdir'client'     ⍝ Location for client certs
       mkdir'server'     ⍝ Location for server certs
       mkdir'tmp'        ⍝ Work in a temporary directory and remove it after we're done
-     
-      'CA/ca-key.pem'KeyGen'rsa' 4096
-      'CA/caconf.cfg'CreateConfig(COMPANYINFO,',CN=TestCA')'' '' 'CA'
-     
-      CreateCA'CA/caconf.cfg' 'CA/ca-key.pem' 'CA/ca-cert.pem'
-     
+           
+      :if ~⎕nexists FQFN 'CA/caconf.cfg'
+        'CA/caconf.cfg'CreateConfig(COMPANYINFO,',CN=TestCA')'' '' 'CA'
+      :endif     
+
+      :if ~∧/⎕NEXISTS¨'"'~⍨∘FQFN¨'CA/ca-key.pem' 'CA/ca-cert.pem'
+        'CA/ca-key.pem'KeyGen'rsa' 4096
+        CreateCA'CA/caconf.cfg' 'CA/ca-key.pem' 'CA/ca-cert.pem'
+      :endif     
       ServerCert'localhost'
       ServerCert'myserver'
       ClientCert'John Doe' 'johndoe@samples.net'
@@ -339,3 +342,4 @@
     :EndSection
 
 :EndNamespace
+
