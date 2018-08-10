@@ -47,7 +47,7 @@
     ⍝ if WSFeatures is 0 You have to accept the upgrade requests
     ∇ onWSUpgradeReq(obj data)
       :Access Public
-      _←srv.DRC.SetProp Name'WSAccept'(data'')
+      _←srv.LIB.SetProp Name'WSAccept'(data'')
       clients,←⊂Name
     ∇
 
@@ -61,7 +61,7 @@
       ns.date←,'ZI4,<->,ZI2,<->,ZI2,< >,ZI2,<:>,ZI2,<:>,ZI2,<.>,ZI3'⎕FMT⍉⍪⎕TS  
 
       resp←{2::7160⌶⍵ ⋄ ⎕JSON ⍵}ns
-      {}clients{srv.DRC.Send ⍺ ⍵}¨⊂resp 1
+      {}clients{srv.LIB.Send ⍺ ⍵}¨⊂resp 1
     ∇
     
 :EndClass
