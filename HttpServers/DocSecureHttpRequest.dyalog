@@ -8,7 +8,7 @@
       :Implements Constructor :Base arg
      
 
-      (err Certs)←srv.DRC.GetProp Name'PeerCert'
+      (err Certs)←srv.LIB.GetProp Name'PeerCert'
       :If err=0
       :AndIf 9=⎕NC'Certs'
           Certs.Chain.Formatted.(Issuer Subject)
@@ -19,6 +19,8 @@
 
     ∇ sa←ServerArgs
       :Access public shared
+      TestCertificates←(2 ⎕NQ '.' 'GetEnvironment' 'Dyalog'),'/Testcertificates/'
+
       sa←('mode' 'Http')('BufferSize' 1000000)
       sa,←⊂('PublicCertFile'('DER' (TestCertificates,'server/localhost-cert.pem')))
       sa,←⊂('PrivateKeyFile'('DER' (TestCertificates,'server/localhost-key.pem')))
@@ -30,10 +32,13 @@
       :Access Public shared
          ⍝ Return the Properties to set for the server or
          ⍝ use the srv ref to access srv and srv.DRC and do it yourself
-      _←srv.DRC.GetProp'.' 'RootCertDir' 'C:\apps\dyalog150U64\TestCertificates\ca\'
-      _←srv.DRC.SetProp'.' 'TraceGNUTls' 99
-      _←srv.DRC.SetProp'.' 'Trace'(1024+8)
-     
+      _←srv.LIB.GetProp'.' 'RootCertDir' (TestCertificates,'ca/')
+⍝      _←srv.LIB.SetProp'.' 'TraceGNUTls' 99
+⍝      _←srv.LIB.SetProp'.' 'Trace'(1024+8)
+⍝      :trap 0
+⍝      'conga.log' ⎕ncreate ¯1
+⍝      ⎕nuntie ¯1
+⍝      :endtrap
       sp←⍬
     ∇
 
@@ -47,7 +52,7 @@
 
     ∇ onHtmlReq;html;headers;hdr;e
       :Access public override
-      ...
+      
       html←'<!DOCTYPE html><html><head><title>Page Title</title></head><body><h1>Requesting: ',Page,'</h1><p>',(Table Headers),'</p>',(Table↑Certs.Chain.Formatted.(Issuer Subject)),'</body></html>'
       headers←0 2⍴⍬
       headers⍪←'Server' 'ClassyDyalog'
