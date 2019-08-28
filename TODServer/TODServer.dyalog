@@ -11,7 +11,7 @@
       :Else
           ⎕←'Text Mode TOD Server started on port ',⍕port
           :While ~DONE
-              rc obj event data←4↑wait←##.DRC.Wait'TOD' 1000 ⍝ Time out now and again
+              rc obj event data←4↑wait←##.DRC.Wait'TODtxt' 1000 ⍝ Time out now and again
               :Select rc
               :Case 0
                   :Select event
@@ -42,7 +42,7 @@
       :Else
           ⎕←'Command Mode TOD Server started on port ',⍕port
           :While ~DONE
-              rc obj event data←4↑wait←##.DRC.Wait'TOD' 1000 ⍝ Time out now and again
+              rc obj event data←4↑wait←##.DRC.Wait'TODcmd' 1000 ⍝ Time out now and again
               :Select rc
               :Case 0
                   :Select event
