@@ -26,7 +26,7 @@
                   ⎕←'Error in Wait: ',⍕wait ⋄ DONE←1
               :EndSelect
           :EndWhile
-          {}##.DRC.Close'TOD'
+          {}##.DRC.Close'TODtxt'
           ⎕←'TOD Server terminated.'
       :EndIf
     ∇
@@ -57,7 +57,7 @@
                   ⎕←'Error in Wait: ',⍕wait ⋄ DONE←1
               :EndSelect
           :EndWhile
-          {}##.DRC.Close'TOD'
+          {}##.DRC.Close'TODcmd'
           ⎕←'TOD Server terminated.'
       :EndIf
     ∇
