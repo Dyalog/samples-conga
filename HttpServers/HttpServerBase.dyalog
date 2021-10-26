@@ -45,7 +45,7 @@
       Body,←data
     ∇
 
-    ∇ onHTTPTrailor(obj data)
+    ∇ onHTTPTrailer(obj data)
       :Access public
       onHtmlReq
     ∇
